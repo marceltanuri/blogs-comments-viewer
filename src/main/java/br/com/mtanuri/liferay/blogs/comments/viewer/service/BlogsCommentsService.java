@@ -10,10 +10,10 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.UserLocalService;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+import java.util.TimeZone;
 
 import br.com.mtanuri.liferay.blogs.comments.viewer.model.BlogComment;
 
@@ -44,11 +44,9 @@ public class BlogsCommentsService {
 				comment.getCreateDate();
 				User user = _userLocalService.getUser(comment.getUserId());
 
-				Locale locale = new Locale("pt", "BR");
-
-				DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT, locale);
-
-				String commentFormatDate = dateFormat.format(comment.getCreateDate());
+				SimpleDateFormat sdfAmerica = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+				sdfAmerica.setTimeZone(TimeZone.getTimeZone("America/Sao_Paulo"));
+				String commentFormatDate = sdfAmerica.format(comment.getCreateDate());
 
 				String answerOf = String
 						.valueOf(comment.getParentMessageId() == parentMessageId ? 0 : comment.getParentMessageId());
