@@ -1,0 +1,4 @@
+Bundle-Name: Blogs Comments Viewer
+Bundle-SymbolicName: br.com.mtanuri.liferay.blogs.comments.viewer
+Bundle-Version: 2.0.0
+Export-Package: br.com.mtanuri.liferay.blogs.comments.viewer.constants
